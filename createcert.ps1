@@ -16,3 +16,5 @@ Export-PfxCertificate -Cert $cert -FilePath ".\cert.pfx" -Password $Password
 $pfxBytes = [IO.File]::ReadAllBytes(".\cert.pfx")
 $pfxBase64 = [Convert]::ToBase64String($pfxBytes)
 $pfxBase64 | Out-File ".\cert.pfx.txt" -Encoding ASCII -NoNewline
+
+echo "THUMBPRINT=$($cert.Thumbprint)" >> ".\THUMBPRINT.txt"
